@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Baitap_javascript</title>
+	<p>1. Cho 1 file nhạc có format như sau : baihattangem.mp3
+
+Viết 1 function lấy đuôi (extension)  của file trên ( kết quả : mp3)
+</p>
+	<button onclick="extension()">Bai_1</button>
+	<p id="Bai_1"></p>
+
+	<p>2. Viết 1 function đảo ngược 1 chuỗi bất kì do bạn tự chọn. VD : “lophocjavascript”
+Kết quả: “tpircsavajcohpol”
+</p>
+	<button onclick="reverseString()">Bai_2</button>
+	<p id="Bai_2"></p>
+
+	<p>3. Viết 1 function lấy ra giá trị lớn nhất của 3 số nhập vào</p>
+	<button onclick="compare()">Bai_3</button><br>
+	<label for="number_a">Number a: </label>
+	<input type="number" id="number_a" name="number_a"><br>
+	<label for="number_b">Number b: </label>
+	<input type="number" id="number_b" name="number_b"><br>
+	<label for="number_c">Number c: </label>
+	<input type="number" id="number_c" name="number_c">
+	<p id="Bai_3"></p>
+
+	<p>4. Viết 1 hàm thay thế chuỗi “ Tôi yêu Việt Nam Đồng” bằng “ Tôi yêu Việt Nam Sắt “</p>
+	<button onclick="replaceStr()">Bai_4</button>
+	<p id="Bai_4_1"></p>
+	<p id="Bai_4_2"></p>
+
+	<p>5. Viết 1 hàm chuyển chuỗi  “Mùa thu năm nay thật đẹp” thành tất cả chữ in hoa.</p>
+	<button onclick="upper()">Bai_5</button>
+	<p id="Bai_5_1"></p>
+	<p id="Bai_5_2"></p>
+
+	<p>6. Viết 1 hàm cắt chuỗi “ Thế giới đẹp nhất khi có em” thành “có em”</p>
+	<button onclick="cutStr()">Bai_6</button>
+	<p id="Bai_6_1"></p>
+	<p id="Bai_6_2"></p>
+
+	<p>7. Viết 1 hàm kiểm tra 1 số bất kì có phải số nguyên tố hay không.</p>
+	<button onclick="checkPrime()">Bai_7</button><br>
+	<label for="number">Check number: </label>
+	<input type="text" id="number" name="number"><br>
+	<p id="Bai_7"></p>
+
+	<p>8. Xây dựng chương trình có một ô Input, một button. Khi click vào button thì in các số từ 1 tới giá trị của ô input( Tạo 1 file index.html, viết luôn code html, css, js vào luôn)</p>
+	<button onclick="loopNumber()">Bai_8</button><br>
+	<label for="inputNumber">Input number: </label>
+	<input type="number" id="inputNumber" name="inputNumber"><br>
+	<p id="Bai_8"></p>
+</head>
+<body>
+	<script>
+		// Bài 1
+		function extension() {
+			var fileNhac = "baihattangem.mp3";
+			var extension = fileNhac.slice(fileNhac.length - 3,fileNhac.length);
+			document.getElementById("Bai_1").innerHTML = "extension : " + extension;
+		}
+
+		// Bài 2
+		function reverseString() {
+			var str = "lophocjavascript";
+			var splitString = str.split("");
+			var reverseArray = splitString.reverse();
+			var joinArray = reverseArray.join("");
+    		document.getElementById('Bai_2').innerHTML = "Đảo ngược lophocjavascript : " + joinArray;
+		}
+
+		// Bài 3
+		function compare() {
+			var a = document.getElementById("number_a").value;
+			var b = document.getElementById("number_b").value;
+			var c = document.getElementById("number_c").value;
+
+			if(a > b && a > c) {
+				document.getElementById("Bai_3").innerHTML = "Số lớn nhất là : " + a;
+			}
+			else if(b > a && b > c) {
+				document.getElementById("Bai_3").innerHTML = "Số lớn nhất là : " + b;
+			}
+			else if(c > a && c > b) {
+				document.getElementById("Bai_3").innerHTML = "Số lớn nhất là : " + c;
+			}
+		}
+
+		// Bài 4
+		function replaceStr(){
+			var str = "Tôi yêu Việt Nam Đồng";
+			document.getElementById("Bai_4_1").innerHTML = str;
+			var replaceStr = str.replace("Đồng","Sắt");
+			document.getElementById("Bai_4_2").innerHTML = "Thay thế : " + replaceStr;
+		}
+
+		// Bài 5
+		function upper() {
+			var str = "Mùa thu năm nay thật đẹp";
+			document.getElementById("Bai_5_1").innerHTML = str;
+			var Viet_hoa = str.toUpperCase();
+			document.getElementById("Bai_5_2").innerHTML = "Viết hoa : " + Viet_hoa;
+		}
+
+		// Bài 6
+		function cutStr() {
+			var str = "Thế giới đẹp nhất khi có em";
+			document.getElementById("Bai_6_1").innerHTML = str;
+			document.getElementById("Bai_6_2").innerHTML = "Cắt chuỗi : " + str.slice(str.length - 5);
+		}
+
+		// Bài 7
+		function checkPrime() {
+			const n = document.getElementById("number").value
+			if (n < 2) {
+				document.getElementById("Bai_7").innerHTML = n + " không phải là số nguyên tố";
+			}
+			else if (n == 2) {
+				document.getElementById("Bai_7").innerHTML = n + " là số nguyên tố";
+			}
+			else if (n % 2 == 0){
+				document.getElementById("Bai_7").innerHTML = n + " không phải là số nguyên tố";
+			}
+			else{
+				for (var i = 3; i < n; i++){
+					if(n % i == 0){
+						document.getElementById("Bai_7").innerHTML = n + " không phải là số nguyên tố";
+						break;
+					} else{
+						document.getElementById("Bai_7").innerHTML = n + " là số nguyên tố";
+						break;
+					}
+				}
+			}
+		}
+
+		// Bài 8
+		function loopNumber() {
+			var inputNumber = document.getElementById("inputNumber").value;
+			var loop = "";
+			for(var i = 1; i <= inputNumber; i++){
+				loop = loop + i + " " ;
+			}
+			document.getElementById("Bai_8").innerHTML = loop;
+		}
+	</script>
+</body>
+</html>
